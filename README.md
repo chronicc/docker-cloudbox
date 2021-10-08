@@ -4,6 +4,8 @@
 
 ## Contents
 
+### Tools
+
 The cloudbox contains a list of reasonable tools necessary for working with the cloud.
 
 * [awscli](https://aws.amazon.com/cli/) - command line tool for AWS
@@ -21,6 +23,36 @@ As well as common linux tools for setup and debugging.
 * traceroute
 * unzip
 * wget
+
+### kubectl Version (version 0.2.0)
+
+On default, the latest available kubectl version is used when running `kubectl`. For compatibility the latest patch level of all minor versions are installed in the image and can be used by appending the major and minor version to the binary (e.g. `kubectl-1.19`). It's also possible to configure the default kubectl version by setting the `KUBECTL_VERSION` environment variable (which also only takes the major and minor version).
+
+Currently available versions are
+
+* `KUBECTL_VERSION=1.19`
+* `KUBECTL_VERSION=1.20`
+* `KUBECTL_VERSION=1.21`
+* `KUBECTL_VERSION=1.22` (default)
+
+### Sleep Mode (version 0.2.0)
+
+The image has a sleep mode integrated, which when activated allows the container to run endlessly until stopped from the outside. To use the sleep mode, you need to run the container with `sleep` as argument. This can be useful when debugging a pod from the inside.
+
+#### Kubernetes Example
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sleeper
+spec:
+  containers:
+  - name: sleeper
+    image: chronicc/cloudbox:0.2.0
+    args:
+    - sleep
+```
 
 ## License
 
