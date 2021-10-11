@@ -35,6 +35,26 @@ Currently available versions are
 * `KUBECTL_VERSION=1.21`
 * `KUBECTL_VERSION=1.22` (default)
 
+#### Kubernetes Example
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: node_list
+spec:
+  containers:
+  - name: node_list
+    image: chronicc/cloudbox:0.2.0
+    args:
+    - /bin/bash
+    - -c
+    - "kubectl get nodes"
+    env:
+    - name: KUBECTL_VERSION
+      value: "1.20"
+```
+
 ### Sleep Mode (version 0.2.0)
 
 The image has a sleep mode integrated, which when activated allows the container to run endlessly until stopped from the outside. To use the sleep mode, you need to run the container with `sleep` as argument. This can be useful when debugging a pod from the inside.
