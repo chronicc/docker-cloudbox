@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
-echo "INFO: Setting default kubectl version to ${KUBECTL_VERSION}"
+
+echo "INFO: Startup // Setting default kubectl version to ${KUBECTL_VERSION}"
 cd /usr/local/bin && ln -s "kubectl-${KUBECTL_VERSION}" kubectl
+cd "$WORKDIR" || exit
+
 
 case $1 in
     sleep )
