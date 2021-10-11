@@ -2,8 +2,11 @@ FROM frolvlad/alpine-glibc
 
 RUN apk --no-cache add \
         bash \
+        binutils \
         coreutils \
         curl \
+        findutils \
+        grep \
         groff \
         jq \
         yq
