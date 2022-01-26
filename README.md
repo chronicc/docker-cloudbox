@@ -17,6 +17,7 @@ As well as common linux tools for setup and debugging.
 
 * bash
 * curl
+* nmap
 * netstat
 * ping
 * tar
