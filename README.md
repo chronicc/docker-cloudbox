@@ -31,10 +31,10 @@ On default, the latest available kubectl version is used when running `kubectl`.
 
 Currently available versions are
 
-* `KUBECTL_VERSION=1.19`
 * `KUBECTL_VERSION=1.20`
 * `KUBECTL_VERSION=1.21`
 * `KUBECTL_VERSION=1.22` (default)
+* `KUBECTL_VERSION=1.23`
 
 #### Kubernetes Example
 
