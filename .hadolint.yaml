@@ -1,0 +1,8 @@
+ignored:
+  - DL3018
+  - DL3059
+
+label-schema:
+  author: text
+  contact: email
+  license: spdx

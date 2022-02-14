@@ -1,4 +1,8 @@
-FROM frolvlad/alpine-glibc
+FROM frolvlad/alpine-glibc:alpine-3.15_glibc-2.34
+
+LABEL author Thomas Steinert
+LABEL contact hello@chroni.cc
+LABEL license MIT
 
 RUN apk --no-cache add \
         bash \
@@ -37,8 +41,9 @@ RUN curl -LO "https://dl.k8s.io/release/v1.23.2/bin/linux/amd64/kubectl" \
  && chmod +x kubectl \
  && mv kubectl /usr/local/bin/kubectl-1.23
 
-ENV KUBECTL_VERSION=1.22
-
 COPY docker-entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+
+ENV KUBECTL_VERSION=1.22
+
 ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
