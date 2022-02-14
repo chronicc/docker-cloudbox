@@ -1,0 +1,17 @@
+[GLOBAL]
+backend_packages = [
+  "pants.backend.experimental.docker",
+  "pants.backend.experimental.docker.lint.hadolint",
+  "pants.backend.shell",
+  "pants.backend.shell.lint.shfmt",
+  "pants.backend.shell.lint.shellcheck"
+]
+pants_version = "2.9.0"
+
+[anonymous-telemetry]
+enabled = true
+repo_id = "973c7138-724b-4cf5-9441-2cfc8e042668"
+
+[docker]
+build_args = ["GIT_TAG"]
+default_repository = "chronicc/{name}"

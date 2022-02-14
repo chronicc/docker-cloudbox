@@ -36,7 +36,7 @@ Currently available versions are
 * `KUBECTL_VERSION=1.22` (default)
 * `KUBECTL_VERSION=1.23`
 
-#### Kubernetes Example
+#### Kubernetes Example for kubectl version
 
 ```yaml
 apiVersion: v1
@@ -60,7 +60,7 @@ spec:
 
 The image has a sleep mode integrated, which when activated allows the container to run endlessly until stopped from the outside. To use the sleep mode, you need to run the container with `sleep` as argument. This can be useful when debugging a pod from the inside.
 
-#### Kubernetes Example
+#### Kubernetes Example for sleep mode
 
 ```yaml
 apiVersion: v1
@@ -74,6 +74,13 @@ spec:
     args:
     - sleep
 ```
+
+## Development
+
+This repository uses [Pants](https://www.pantsbuild.org/) to build and publish the container image.
+
+* To build the image, run `GIT_TAG=<x.y.z> ./pants package :cloudbox`
+* To publish the image, run `GIT_TAG=<x.y.z> ./pants publish :cloudbox`
 
 ## License
 
