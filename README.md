@@ -1,6 +1,6 @@
 # Cloudbox
 
-> All-in-one container for working with cloud setups.
+> All-in-one debugging container for working with cloud setups.
 
 ## Contents
 
