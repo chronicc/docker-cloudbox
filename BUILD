@@ -1,9 +1,5 @@
 docker_image(
-    name="cloudbox",
-    dependencies=[
-        ":entrypoint"
-    ],
-    image_tags=["{build_args.GIT_TAG}"]
+    name="cloudbox", dependencies=[":entrypoint"], image_tags=["{build_args.GIT_TAG}"]
 )
 
 file(

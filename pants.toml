@@ -15,3 +15,16 @@ repo_id = "973c7138-724b-4cf5-9441-2cfc8e042668"
 [docker]
 build_args = ["GIT_TAG"]
 default_repository = "chronicc/{name}"
+env_vars = [
+  "HOME",
+  "USER",
+  "DOCKER_CONFIG=/home/chronicc/.docker",
+  "DOCKER_CONTEXT"
+]
+
+[docker.registries.index]
+address = "index.docker.io"
+default = true
+
+#[stats]
+#log = true

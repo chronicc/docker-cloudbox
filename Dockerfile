@@ -1,8 +1,11 @@
 FROM frolvlad/alpine-glibc:alpine-3.15_glibc-2.34
 
+ARG GIT_TAG
+
 LABEL author Thomas Steinert
 LABEL contact hello@chroni.cc
 LABEL license MIT
+LABEL version $GIT_TAG
 
 RUN apk --no-cache add \
         bash \
