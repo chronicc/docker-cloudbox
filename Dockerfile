@@ -13,6 +13,7 @@ RUN apk --no-cache add \
         coreutils \
         curl \
         findutils \
+        git \
         grep \
         groff \
         jq \
@@ -44,6 +45,13 @@ RUN curl -LO "https://dl.k8s.io/release/v1.22.5/bin/linux/amd64/kubectl" \
 RUN curl -LO "https://dl.k8s.io/release/v1.23.2/bin/linux/amd64/kubectl" \
         && chmod +x kubectl \
         && mv kubectl /usr/local/bin/kubectl-1.23
+
+## tfenv
+## Automatically install the terraform version that is required by the
+## .terraform-version file inside the repository
+RUN git clone --depth=1 https://github.com/tfutils/tfenv.git ~/.tfenv \
+        && ~/.tfenv/bin/tfenv install 1.3.5 \
+        && ~/.tfenv/bin/tfenv use 1.3.5
 
 COPY docker-entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
