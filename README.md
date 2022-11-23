@@ -28,6 +28,7 @@ As well as common linux tools for setup and debugging.
 * traceroute
 * unzip
 * wget
+* zip
 
 ### kubectl Version (version 0.2.0)
 
