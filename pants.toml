@@ -1,12 +1,12 @@
 [GLOBAL]
 backend_packages = [
-  "pants.backend.experimental.docker",
-  "pants.backend.experimental.docker.lint.hadolint",
+  "pants.backend.docker",
+  "pants.backend.docker.lint.hadolint",
   "pants.backend.shell",
   "pants.backend.shell.lint.shfmt",
   "pants.backend.shell.lint.shellcheck"
 ]
-pants_version = "2.9.0"
+pants_version = "2.14.0"
 
 [anonymous-telemetry]
 enabled = true
@@ -18,13 +18,19 @@ default_repository = "chronicc/{name}"
 env_vars = [
   "HOME",
   "USER",
-  "DOCKER_CONFIG=/home/chronicc/.docker",
-  "DOCKER_CONTEXT"
+  "DOCKER_CONFIG=%(homedir)s/.docker",
+  "DOCKER_CONTEXT",
+]
+tools = [
+  "docker-credential-secretservice",
+  "dirname",
+  "readlink",
+  "python3",
 ]
 
 [docker.registries.index]
 address = "index.docker.io"
 default = true
 
-#[stats]
-#log = true
+# [stats]
+# log = true
