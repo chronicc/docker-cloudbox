@@ -16,6 +16,7 @@ RUN apk --no-cache add \
         grep \
         groff \
         jq \
+        make \
         nmap \
         yq
 

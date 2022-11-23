@@ -17,6 +17,7 @@ As well as common linux tools for setup and debugging.
 
 * bash
 * curl
+* make
 * nmap
 * netstat
 * ping
@@ -79,8 +80,8 @@ spec:
 
 This repository uses [Pants](https://www.pantsbuild.org/) to build and publish the container image.
 
-* To build the image, run `GIT_TAG=<x.y.z> ./pants package :cloudbox`
-* To publish the image, run `GIT_TAG=<x.y.z> ./pants publish :cloudbox`
+* To build the image, run `make build`
+* To publish the image, run `make publish`
 
 ## License
 
