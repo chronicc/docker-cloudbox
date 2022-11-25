@@ -12,6 +12,7 @@ RUN apk --no-cache add \
         binutils \
         coreutils \
         curl \
+        docker \
         findutils \
         git \
         grep \

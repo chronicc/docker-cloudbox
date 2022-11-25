@@ -9,6 +9,7 @@
 The cloudbox contains a list of reasonable tools necessary for working with the cloud.
 
 * [awscli](https://aws.amazon.com/cli/) - command line tool for AWS
+* [docker](https://www.docker.com/) - container orchestrator
 * [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/) - command line tool for Kubernetes
 * [jq](https://stedolan.github.io/jq/) - command line processor for json
 * [terraform](https://www.terraform.io/) - cloud provisioner
