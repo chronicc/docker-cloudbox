@@ -1,12 +1,18 @@
 GIT_TAG ?=
 
+ifndef ($(GIT_REV))
+GIT_REV=$(shell git rev-parse --short HEAD)
+endif
+
 ifndef ($(GIT_TAG))
 GIT_TAG=$(shell git describe --tags `git rev-list --tags --max-count=1`)
 endif
 
+.PHONY: build publish
+
 build:
-	./pants lint Dockerfile
-	GIT_TAG=$(GIT_TAG) ./pants package :cloudbox
+	hadolint Dockerfile
+	docker build --build-arg="GIT_REV=$(GIT_REV)" --build-arg="GIT_TAG=$(GIT_TAG)" -t chronicc/cloudbox:$(GIT_TAG) .
 
 publish:
-	GIT_TAG=$(GIT_TAG) ./pants publish :cloudbox
+	docker publish chronicc/cloudbox:$(GIT_TAG) .

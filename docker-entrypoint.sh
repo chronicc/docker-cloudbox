@@ -1,9 +1,28 @@
 #!/usr/bin/env bash
 
-export PATH="$HOME/.tfenv/bin:$PATH"
+. "$HOME/.asdf/asdf.sh"
+. "$HOME/.asdf/completions/asdf.bash"
 
-echo "INFO: Startup // Setting default kubectl version to ${KUBECTL_VERSION}"
-ln -s "/usr/local/bin/kubectl-${KUBECTL_VERSION}" /usr/local/bin/kubectl
+
+# apk Packages
+IFS=',' read -ra packages <<< "$APK_PACKAGES"
+for package in "${packages[@]}"; do
+    echo "INFO: Startup // Installing apt package '${package}'."
+    apk add $package
+done
+
+
+# asdf Plugins
+IFS=',' read -ra plugins <<< "$ASDF_PLUGINS"
+for plugin in "${plugins[@]}"; do
+    plugin_name="${plugin%=*}"
+    plugin_version="${plugin#*=}"
+    echo "INFO: Startup // Installing asdf plugin '${plugin_name}' with version '${plugin_version}'."
+    asdf plugin add $plugin_name
+    asdf install $plugin_name $plugin_version
+    asdf global $plugin_name $plugin_version
+done
+
 
 case $1 in
     sleep )

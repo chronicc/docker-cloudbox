@@ -1,26 +1,17 @@
 # Cloudbox
 
-> All-in-one debugging container for working with cloud setups.
+> Container for working with pipelines and debugging cloud setups.
 
 ## Contents
 
-### Tools
+### Basic Tools
 
-The cloudbox contains a list of reasonable tools necessary for working with the cloud.
-
-* [awscli](https://aws.amazon.com/cli/) - command line tool for AWS
-* [docker](https://www.docker.com/) - container orchestrator
-* [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/) - command line tool for Kubernetes
-* [jq](https://stedolan.github.io/jq/) - command line processor for json
-* [terraform](https://www.terraform.io/) - cloud provisioner
-* [tfenv](https://github.com/tfutils/tfenv) - version manager for terraform
-* [yq](https://github.com/mikefarah/yq) - command line processor for yaml
-
-As well as common linux tools for setup and debugging.
+The cloudbox contains a list of basic tools which have shown to be necessary in many scenarios.
 
 * bash
 * curl
 * git
+* jq
 * make
 * netstat
 * nmap
@@ -29,44 +20,48 @@ As well as common linux tools for setup and debugging.
 * traceroute
 * unzip
 * wget
+* yq
 * zip
 
-### kubectl Version (version 0.2.0)
+### Additional Packages
 
-On default, the latest available kubectl version is used when running `kubectl`. For compatibility the latest patch level of all minor versions are installed in the image and can be used by appending the major and minor version to the binary (e.g. `kubectl-1.19`). It's also possible to configure the default kubectl version by setting the `KUBECTL_VERSION` environment variable (which also only takes the major and minor version).
+If you need more packages than what is included in this image, there are ways how you can add them during the container startup. Note that the more packages you add, the longer the startup time takes.
 
-Currently available versions are
+#### apk Packages
 
-* `KUBECTL_VERSION=1.20`
-* `KUBECTL_VERSION=1.21`
-* `KUBECTL_VERSION=1.22` (default)
-* `KUBECTL_VERSION=1.23`
+apk is the [Alpine package manager](https://wiki.alpinelinux.org/wiki/Alpine_Package_Keeper).
 
-#### Kubernetes Example for kubectl version
+You can install additional packages via the `APK_PACKAGES` environment variable during startup. The variable takes a string of package names seperated by semicolon.
+
+#### asdf Plugins
+
+asdf is a third party [runtime version manager](https://asdf-vm.com/).
+
+It enables you to install specific versions of tools in the form of plugins via the `ASDF_PLUGINS` environment variable. The variable takes a string with plugin tuples seperated by semicolon. The plugin tuple contains the name of the plugin and the version in the form of `plugin=version`. To get a list of all possible packages you can visit [the repository](https://github.com/asdf-vm/asdf-plugins/tree/master/plugins) or install asdf yourself and use the `asdf plugin list all` command.
+
+#### Kubernetes Example for Additional Packages
 
 ```yaml
 apiVersion: v1
 kind: Pod
 metadata:
-  name: node_list
+  name: example
 spec:
   containers:
-  - name: node_list
-    image: chronicc/cloudbox:0.2.0
-    args:
-    - /bin/bash
-    - -c
-    - "kubectl get nodes"
-    env:
-    - name: KUBECTL_VERSION
-      value: "1.20"
+    - name: example
+      image: chronicc/cloudbox
+      env:
+        - name: APK_PACKAGES
+          value: "ansible,ansible-lint"
+        - name: ASDF_PLUGINS
+          value: "kubectl=latest,terraform=1.4.0"
 ```
 
-### Sleep Mode (version 0.2.0)
+### Sleep Mode
 
 The image has a sleep mode integrated, which when activated allows the container to run endlessly until stopped from the outside. To use the sleep mode, you need to run the container with `sleep` as argument. This can be useful when debugging a pod from the inside.
 
-#### Kubernetes Example for sleep mode
+#### Kubernetes Example for Sleep Mode
 
 ```yaml
 apiVersion: v1
@@ -75,18 +70,18 @@ metadata:
   name: sleeper
 spec:
   containers:
-  - name: sleeper
-    image: chronicc/cloudbox:0.2.0
-    args:
-    - sleep
+    - name: sleeper
+      image: chronicc/cloudbox
+      args:
+        - sleep
 ```
 
 ## Development
 
-This repository uses [Pants](https://www.pantsbuild.org/) to build and publish the container image.
+This repository uses [asdf](https://asdf-vm.com/) for managing dependencies.
 
-* To build the image, run `make build`
-* To publish the image, run `make publish`
+* To build the image, run `make build`.
+* To publish the image, run `make publish`.
 
 ## License
 
