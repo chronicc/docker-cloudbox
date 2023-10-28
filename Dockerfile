@@ -1,5 +1,6 @@
 FROM frolvlad/alpine-glibc:alpine-3.15_glibc-2.34
 
+ARG GIT_REV
 ARG GIT_TAG
 
 RUN apk --no-cache add \
@@ -29,5 +30,6 @@ ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
 
 LABEL author Thomas Steinert
 LABEL contact hello@chroni.cc
+LABEL git-revision $GIT_REV
 LABEL license MIT
 LABEL version $GIT_TAG
