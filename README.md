@@ -1,5 +1,7 @@
 # Cloudbox
 
+![test](https://github.com/chronicc/docker-cloudbox/actions/workflows/test.yml/badge.svg?branch=main)
+
 > Container for working with pipelines and debugging cloud setups.
 
 ## Contents
