@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "docker-cloudbox"
+version = "0.1.0"
+description = "Container for working with pipelines and debugging cloud setups."
+authors = ["Thomas Steinert <hello@chroni.cc>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest-testinfra = "^9.0.0"
+pytest = "^7.4.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
