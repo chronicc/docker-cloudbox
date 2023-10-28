@@ -15,4 +15,4 @@ build:
 	docker build --build-arg="GIT_REV=$(GIT_REV)" --build-arg="GIT_TAG=$(GIT_TAG)" -t chronicc/cloudbox:$(GIT_TAG) .
 
 publish:
-	docker publish chronicc/cloudbox:$(GIT_TAG) .
+	docker push chronicc/cloudbox:$(GIT_TAG)
