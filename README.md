@@ -83,7 +83,7 @@ spec:
 
 ## Development
 
-This repository uses [Pants](https://www.pantsbuild.org/) to build and publish the container image.
+This repository uses [asdf](https://asdf-vm.com/) for managing dependencies.
 
 * To build the image, run `make build`
 * To publish the image, run `make publish`
