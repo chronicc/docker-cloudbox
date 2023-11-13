@@ -86,13 +86,13 @@ testing = ["argcomplete", "attrs (>=19.2.0)", "hypothesis (>=3.56)", "mock", "no
 
 [[package]]
 name = "pytest-testinfra"
-version = "9.0.0"
+version = "10.0.0"
 description = "Test infrastructures"
 optional = false
 python-versions = ">=3.9"
 files = [
-    {file = "pytest-testinfra-9.0.0.tar.gz", hash = "sha256:5311b369e0546920fce464c3bf945b55ebe75a127568f6d615e94b8891340149"},
-    {file = "pytest_testinfra-9.0.0-py3-none-any.whl", hash = "sha256:2cb0fab78c17ed68edc3c812ef68905e19665060f94ce0f1601f5cd0ea4d258c"},
+    {file = "pytest-testinfra-10.0.0.tar.gz", hash = "sha256:2fb7d0185458a9ba669ff14d0ddbec8b3900c6bde3fb6fad9b097374ce4ab77d"},
+    {file = "pytest_testinfra-10.0.0-py3-none-any.whl", hash = "sha256:03be2824aece7a5eda8bb4f9dbed4d8c821efcfbbc13e13df17f392c229a44ed"},
 ]
 
 [package.dependencies]
@@ -118,4 +118,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "e47f070b72edeae4694f4a46ea1f76bee39b67716c1830b4aaead9dd72552772"
+content-hash = "4f9a143fff1e04d81b1a730e32ef805e10c2706c07b64f0a1f68717fbcb04193"
