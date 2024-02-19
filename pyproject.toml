@@ -11,7 +11,7 @@ python = "^3.10"
 
 
 [tool.poetry.group.dev.dependencies]
-pytest-testinfra = "^10.0.0"
+pytest-testinfra = "^10.1.0"
 pytest = "^8.0.0"
 
 [build-system]
