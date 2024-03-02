@@ -80,10 +80,11 @@ spec:
 
 ## Development
 
-This repository uses [asdf](https://asdf-vm.com/) for managing dependencies.
+This repository uses [mise](https://mise.jdx.dev/) for managing dependencies.
 
-* To build the image, run `make build`.
-* To publish the image, run `make publish`.
+* To install dependencies, run `mise run pip:install`
+* To build the image, run `mise run build`.
+* To publish the image, run `mise run publish`.
 
 ## License
 
