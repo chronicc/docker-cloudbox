@@ -11,13 +11,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install tools from asdf config
-        uses: ai/asdf-cache-action@v1
+      - uses: jdx/mise-action@v2
+        with:
+          install: true
+          cache: true
+          experimental: true
 
       - name: Fetch repository tags
-        run: |
-          git fetch --unshallow --tags
+        run: git fetch --unshallow --tags
 
-      - name: Run Make target 'test'
-        run: |
-          make test
+      - run: mise run test

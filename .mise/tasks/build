@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# mise description="Build the container image"
+
+GIT_TAG=$1
+if [ -z "$GIT_TAG" ]; then
+  GIT_TAG=$(git describe --tags `git rev-list --tags --max-count=1`)
+fi
+
+if [ -z "$GIT_REV" ]; then
+  GIT_REV=$(git rev-parse --short HEAD)
+fi
+
+echo "Building image with rev: $GIT_REV"
+echo "Building image with tag: $GIT_TAG"
+
+hadolint Dockerfile
+docker build --build-arg="GIT_REV=$GIT_REV" --build-arg="GIT_TAG=$GIT_TAG" -t chronicc/cloudbox:$GIT_TAG .
