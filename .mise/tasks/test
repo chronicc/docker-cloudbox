@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# mise description="Run tests against the image"
+# mise depends=["build"]
+
+GIT_TAG=$1
+if [ -z "$GIT_TAG" ]; then
+  GIT_TAG=$(git describe --tags `git rev-list --tags --max-count=1`)
+fi
+
+echo "Running tests against tag: $GIT_TAG"
+
+docker run --rm -v .:/repo \
+  --env "APK_PACKAGES=mysql-client,python3,py3-pip" \
+  --env "ASDF_PLUGINS=kubectl=latest,terraform=1.4.0" \
+  chronicc/cloudbox:$GIT_TAG \
+  bash -c 'pip install pytest-testinfra && py.test -v /repo/tests'
