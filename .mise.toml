@@ -1,0 +1,13 @@
+[env]
+_.python.venv.create = true
+_.python.venv.path = ".venv"
+DOCKER_BUILDKIT=1
+
+[tools]
+hadolint = "2.12.0"
+kubectl = "1.28.3"
+minikube = "1.32.0"
+python = "3.12"
+
+[settings]
+experimental = true

@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# mise description="Publish the container image"
+# mise depends=["test"]
+
+GIT_TAG=$1
+if [ -z "$GIT_TAG" ]; then
+  GIT_TAG=$(git describe --tags `git rev-list --tags --max-count=1`)
+fi
+
+echo "Publishing image with tag: $GIT_TAG"
+
+docker push chronicc/cloudbox:$GIT_TAG

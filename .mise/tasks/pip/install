@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# mise description="Install python requirements"
+
+pip install -r requirements.lock
