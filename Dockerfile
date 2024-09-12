@@ -28,8 +28,8 @@ ENV APK_PACKAGES=
 
 ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
 
-LABEL author Thomas Steinert
-LABEL contact hello@chroni.cc
-LABEL git-revision $GIT_REV
-LABEL license MIT
-LABEL version $GIT_TAG
+LABEL author="Thomas Steinert"
+LABEL contact="hello@chroni.cc"
+LABEL git-revision="$GIT_REV"
+LABEL license="MIT"
+LABEL version="$GIT_TAG"
